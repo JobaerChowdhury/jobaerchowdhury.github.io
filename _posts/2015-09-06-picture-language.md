@@ -35,7 +35,7 @@ Although reading that is not mandatory to follow the code examples here.
 
 <div id="fig2" class="image">
     <img src="/public/picture-language/primitive-painter.png" /> 
-    <div class="caption">Figure-1.2: A primitive painter</div>
+    <div class="caption">Figure-1.2: A primitive painter, wave</div>
 </div>
 
 ## Vectors, Frames and drawLine 
@@ -127,38 +127,38 @@ point specifies the new frame's origin and the other two specify the ends of its
 the unit square specify a frame contained within the original frame.”
 </div>
 
-Now we can use the transformPainter to define various transformations. For example the flipVert and flipHoriz like this. 
+Now we can use the transformPainter to define various transformations. For example the *flipVert* and *flipHoriz* like this. 
 
 {% gist b2734592c1192521f51e %}
 
-Result of flipHoriz on wave painter is shown in <a href="#fig3">Figure-1.3</a>. 
+Result of *flipVert* and *flipHoriz* on wave painter is shown in <a href="#fig3">Figure-1.3</a>. 
 
 <div id="fig3" class="image">
     <img src="/public/picture-language/flip-horiz.png" /> 
     <div class="caption">Figure-1.3: flipVert and flipHoriz on wave painter</div>
 </div>
 
-Now we will define two more transformations - beside and below.  
+Next we define two more transformations, *beside* and *below*.  
 
 {% gist 120b55055389b2c424b6 %}
 
-What below does is splits the frame into two half. and draws the two painters passed as parameters in the one half each.
+What *below* does is, it splits the frame into two half. And draws the two painters passed as parameters in one half each.
 Result of *(beside wave (flipHoriz wave)* is shown in <a href="#fig4">Figure-1.4</a>. The implementation of beside is very similar.
   
 <div id="fig4" class="image">
     <img src="/public/picture-language/beside.png" /> 
-    <div class="caption">Figure-1.4: Result of (beside wave (flipHoriz wave)</div>
+    <div class="caption">Figure-1.4: Result of (beside wave (flipHoriz wave))</div>
 </div>
 
 
-We can also define some recursive functions as painters. For example we can define a painter which will split the 
-initial painter in smaller part with each subsequent call. 
+We can also define recursive functions as painters. For example we can define a painter which will split the 
+initial painter in smaller part on each subsequent call. 
 
 {% gist 472fd348305dec45a96b %}
 
 The result of performing *(rightSplit wave 6)* is shown in <a href="#fig5">Figure-1.5</a>. 
-Similarly we can also define another method upSplit, 
-which will split recursively the image in upward location. 
+Similarly we can also define another function upSplit, 
+which will split the image recursively in upward location. 
 
 <div id="fig5" class="image">
     <img src="/public/picture-language/right-split.png" /> 
@@ -166,11 +166,11 @@ which will split recursively the image in upward location.
 </div>
 
 
-We are pretty close to our final painter. First we define the function cornerSplit. 
+We are pretty close to our final painter. We need to define one more transformer, *cornerSplit*. 
 
 {% gist 95d740e4693850c93f87 %}
 
-It is a simple recursive function. We only have to calculate the smaller pieces and place them appropriately. 
+*CornerSplit* is a simple recursive function. We are calculating the smaller pieces, and placing them appropriately. 
 Result of performing *(cornerSplit wave 6)* is shown in <a href="#fig6">Figure-1.6</a>. 
 
 <div id="fig6" class="image">
@@ -178,13 +178,13 @@ Result of performing *(cornerSplit wave 6)* is shown in <a href="#fig6">Figure-1
     <div class="caption">Figure-1.6: Result of (cornerSplit wave 6)</div>
 </div>
 
-Finally we define the squareLimit function as below. 
+Finally we define the *squareLimit* function as below. 
 
 {% gist e3d8a6f4acbbb21e0d91 %}
 
-It is also a simple function where we compute the smaller parts (quarter and half) of the frame. And then we place 
-the smaller parts appropriately. Now we can apply the squareLimit function to our wave painter and get the beautiful 
-pattern shown in <a href="#fig1">Figure-1.1</a>. 
+It is also a simple function where we are computing the smaller parts (quarter and half) of the frame. And then combining 
+the smaller parts to form the final painter. Now we can apply the *squareLimit* function to our *wave* painter,
+and get the beautiful pattern shown in <a href="#fig1">Figure-1.1</a>. 
 
 {% gist 946274f47f75fc30ee34 %}
 
@@ -198,4 +198,4 @@ language to handle different basic drawing capabilities in a uniform way. The me
 the closure property, which permits us to easily build up complex designs.” -- SICP. 
 </div>
 
-You can check the full code <a href="https://github.com/JobaerChowdhury/picture-language">here</a>.  
+You can view the full code <a href="https://github.com/JobaerChowdhury/picture-language">here</a>.  
