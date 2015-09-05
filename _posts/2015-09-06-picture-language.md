@@ -17,7 +17,7 @@ keywords: sicp, Structure and Interpretation of computer programs, picture langu
 ## Background
 I remember I was fascinated by the example “A picture language”, while I was reading 
 <a target="_blank" href="https://mitpress.mit.edu/sicp/">SICP</a>. However, I was unable to 
-try that example out on my own, due to my limited knowledge on Scheme or Lisp. I am recently learning 
+try that example out on my own, due to my limited knowledge on Scheme or Lisp. Recently I am learning 
 <a target="_blank" href="http://elm-lang.org">Elm</a>, and while running <a target="_blank" 
 href="http://elm-lang.org/examples">some examples,</a> I found it’s very easy to draw something on the browser. And the 
 first thing I wanted to do is to simulate the picture language example using Elm. This example 
@@ -30,7 +30,8 @@ will start with a basic painter that looks like <a href="#fig2">Figure-1.2</a>.
 </div>
 
 After that we'll define some procedures which transforms our basic painter to this beautiful, 
-complex pattern shown in <a href="#fig1">Figure-1.1</a>. I recommend you to read the <a href="https://mitpress.mit.edu/sicp/full-text/sicp/book/node36.html">book example</a>. 
+complex pattern shown in <a href="#fig1">Figure-1.1</a>. I recommend you to read the <a target="_blank" 
+href="https://mitpress.mit.edu/sicp/full-text/sicp/book/node36.html">book example</a>. 
 Although reading that is not mandatory to follow the code examples here.
 
 <div id="fig2" class="image">
