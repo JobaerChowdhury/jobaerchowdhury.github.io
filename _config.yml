@@ -6,6 +6,7 @@ relative_permalinks: true
 
 # Setup
 title:               Jobaer's blog
+keywords:            blog
 tagline:             Random experiments
 url:                 http://jobaerchowdhury.github.io
 paginate:            1

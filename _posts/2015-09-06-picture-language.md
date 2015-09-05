@@ -1,6 +1,9 @@
 ---
 layout: post
 title: A Picture Language in Elm
+excerpt: A picture language implementation in Elm (from SICP)
+featured_image: "/public/picture-language/painter-final.png"
+keywords: sicp, Structure and Interpretation of computer programs, picture language, elm, example, painters, functional programming
 ---
 
 
