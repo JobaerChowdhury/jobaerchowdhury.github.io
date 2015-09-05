@@ -6,8 +6,8 @@ title: A Picture Language in Elm
 
 <div class="message">
   TL;DR: This is an implementation of the <a target="_blank" href="https://mitpress.mit.edu/sicp/full-text/sicp/book/node36.html">picture language example from SICP</a> in elm. 
-  You can copy the code from <a target="_blank" href="https://github.com/JobaerChowdhury/picture-language/edit/master/PictureLanguage.elm">here</a> 
-  and paste it on <a target="_blank" href="http://elm-lang.org/try">Try Elm</a> to see the result. Have fun!
+  You can copy the code from <a target="_blank" href="https://github.com/JobaerChowdhury/picture-language/blob/master/PictureLanguage.elm">here</a> 
+  and paste it on <a target="_blank" href="http://elm-lang.org/try">Try Elm</a> to see the <a href="#fig1">result</a>. Have fun!
 </div>
 
 
@@ -52,7 +52,7 @@ Next we define a type called Frame. Frame has three properties, the origin, firs
 
 {% gist af2be00c00a7bbd1bccf %}
 
-Next we define the frameCoordMap as exactly defined in the book text. Here frameCoordMap will take two parameter, 
+Next we define the *frameCoordMap* as exactly defined in the book text. Here *frameCoordMap* will take two parameter, 
 a frame and a Point. And it will map that point inside the frame and return the coordinates of the mapped point. 
 So that the point will be shifted and scaled to fit the frame. 
 
@@ -110,39 +110,67 @@ Now we will write a function which will transform painters. Let’s define the f
 
 {% gist c2a6fca1cdde476f89e2 %}
 
+Explanation from the book. 
+
+<div class="message">
 “Painter operations are based on the procedure transform-painter, which takes as arguments a painter and 
 information on how to transform a frame and produces a new painter. The transformed painter, when called on a frame, 
 transforms the frame and calls the original painter on the transformed frame.The arguments to transform-painter 
 are points (represented as vectors) that specify the corners of the new frame: When mapped into the frame, the first 
 point specifies the new frame's origin and the other two specify the ends of its edge vectors. Thus, arguments within 
 the unit square specify a frame contained within the original frame.”
+</div>
 
 Now we can use the transformPainter to define various transformations. For example the flipVert and flipHoriz like this. 
 
 {% gist b2734592c1192521f51e %}
 
-Result of flipHoriz on wave painter is given on figure 2. todo 
+Result of flipHoriz on wave painter is shown in <a href="#fig3">Figure-1.3</a>. 
 
-We can also define other transformations like beside or below. For example here is the below function. 
+<div id="fig3" class="image">
+    <img src="/public/picture-language/flip-horiz.png" /> 
+    <div class="caption">Figure-1.3: flipVert and flipHoriz on wave painter</div>
+</div>
+
+Now we will define two more transformations - beside and below.  
 
 {% gist 120b55055389b2c424b6 %}
 
 What below does is splits the frame into two half. and draws the two painters passed as parameters in the one half each.
- Result of (below wave (flipHoriz wave) is shown in figure 3. todo. The implementation of beside is very similar. 
+Result of *(beside wave (flipHoriz wave)* is shown in <a href="#fig4">Figure-1.4</a>. The implementation of beside is very similar.
+  
+<div id="fig4" class="image">
+    <img src="/public/picture-language/beside.png" /> 
+    <div class="caption">Figure-1.4: Result of (beside wave (flipHoriz wave)</div>
+</div>
+
 
 We can also define some recursive functions as painters. For example we can define a painter which will split the 
 initial painter in smaller part with each subsequent call. 
 
 {% gist 472fd348305dec45a96b %}
 
-The result of performing (rightSplit wave 6) is shown in figure 6. todo. Similarly we can define another method upSplit. 
+The result of performing *(rightSplit wave 6)* is shown in <a href="#fig5">Figure-1.5</a>. 
+Similarly we can also define another method upSplit, 
+which will split recursively the image in upward location. 
+
+<div id="fig5" class="image">
+    <img src="/public/picture-language/right-split.png" /> 
+    <div class="caption">Figure-1.5: Result of (rightSplit wave 6)</div>
+</div>
+
 
 We are pretty close to our final painter. First we define the function cornerSplit. 
 
 {% gist 95d740e4693850c93f87 %}
 
 It is a simple recursive function. We only have to calculate the smaller pieces and place them appropriately. 
-Result of performing (cornerSplit wave 6) is shown in figure 7. 
+Result of performing *(cornerSplit wave 6)* is shown in <a href="#fig6">Figure-1.6</a>. 
+
+<div id="fig6" class="image">
+    <img src="/public/picture-language/corner-split.png" /> 
+    <div class="caption">Figure-1.6: Result of (cornerSplit wave 6)</div>
+</div>
 
 Finally we define the squareLimit function as below. 
 
@@ -150,7 +178,7 @@ Finally we define the squareLimit function as below.
 
 It is also a simple function where we compute the smaller parts (quarter and half) of the frame. And then we place 
 the smaller parts appropriately. Now we can apply the squareLimit function to our wave painter and get the beautiful 
-pattern shown in figure 7. 
+pattern shown in <a href="#fig1">Figure-1.1</a>. 
 
 {% gist 946274f47f75fc30ee34 %}
 
