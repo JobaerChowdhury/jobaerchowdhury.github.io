@@ -19,11 +19,21 @@ try that example out on my own due to my limited knowledge on Scheme or Lisp. I 
 href="http://elm-lang.org/examples">some examples</a> I found it’s very easy to draw something on the browser. And I 
 decided to simulate the picture language example using Elm. This picture language example shows us how we can define 
 some primitive operations and build complex structure from those primitive operations. We will start with a basic 
-painter which looks like this - 
+painter which looks like **Figure-1.2**. 
+
+<div class="image">
+    <img src="/public/picture-language/painter-final.png" /> 
+    <div class="caption">Figure-1.1: Final result</div>
+</div>
 
 And after that we define some procedures which ultimately transforms our basic painter to this beautiful, 
-complex pattern. I recommend you to read the <a href="https://mitpress.mit.edu/sicp/full-text/sicp/book/node36.html">book example</a>. 
+complex pattern shown in **Figure-1.1**. I recommend you to read the <a href="https://mitpress.mit.edu/sicp/full-text/sicp/book/node36.html">book example</a>. 
 Although reading that is not mandatory to follow the code examples here.
+
+<div class="image">
+    <img src="/public/picture-language/primitive-painter.png" /> 
+    <div class="caption">Figure-1.2: A primitive painter</div>
+</div>
 
 ## Vectors, Frames and drawLine 
 
