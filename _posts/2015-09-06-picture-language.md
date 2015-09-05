@@ -109,7 +109,7 @@ image like <a href="#fig2">Figure-1.2</a> as a result.
 {% gist ef160bfeaa4faab26321 %}
 
 ## Transforming painters 
-Now we will write a function which will transform painters. Let’s define the function first. 
+Now we will write a function which will transform painters. 
 
 {% gist c2a6fca1cdde476f89e2 %}
 
