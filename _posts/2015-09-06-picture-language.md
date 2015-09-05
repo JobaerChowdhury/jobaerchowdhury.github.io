@@ -5,28 +5,28 @@ title: A Picture Language in Elm
 
 
 <div class="message">
-  TL;DR: This is an implementation of the <a target="_blank" href="https://mitpress.mit.edu/sicp/full-text/sicp/book/node36.html">picture language example from SICP</a> in elm. 
+  TL;DR: This is an implementation of the <a target="_blank" href="https://mitpress.mit.edu/sicp/full-text/sicp/book/node36.html">picture language example from SICP</a> in Elm. 
   You can copy the code from <a target="_blank" href="https://github.com/JobaerChowdhury/picture-language/blob/master/PictureLanguage.elm">here</a> 
   and paste it on <a target="_blank" href="http://elm-lang.org/try">Try Elm</a> to see the <a href="#fig1">result</a>. Have fun!
 </div>
 
 
 ## Background
-I remember I was fascinated by the example called “A picture language” while I was reading 
-<a target="_blank" href="https://mitpress.mit.edu/sicp/">SICP</a>. But I was unable to 
-try that example out on my own due to my limited knowledge on Scheme or Lisp. I am recently learning 
-<a target="_blank" href="http://elm-lang.org">Elm</a> and while running <a target="_blank" 
-href="http://elm-lang.org/examples">some examples</a> I found it’s very easy to draw something on the browser. And I 
-decided to simulate the picture language example using Elm. This picture language example shows us how we can define 
-some primitive operations and build complex structure from those primitive operations. We will start with a basic 
-painter which looks like <a href="#fig2">Figure-1.2</a>. 
+I remember I was fascinated by the example “A picture language”, while I was reading 
+<a target="_blank" href="https://mitpress.mit.edu/sicp/">SICP</a>. However, I was unable to 
+try that example out on my own, due to my limited knowledge on Scheme or Lisp. I am recently learning 
+<a target="_blank" href="http://elm-lang.org">Elm</a>, and while running <a target="_blank" 
+href="http://elm-lang.org/examples">some examples,</a> I found it’s very easy to draw something on the browser. And the 
+first thing I wanted to do is to simulate the picture language example using Elm. This example 
+shows us how we can define some primitive operations, and build complex structure uniformly from those operations. We 
+will start with a basic painter that looks like <a href="#fig2">Figure-1.2</a>. 
 
 <div id="fig1" class="image">
     <img src="/public/picture-language/painter-final.png" /> 
     <div class="caption">Figure-1.1: Final result</div>
 </div>
 
-And after that we define some procedures which ultimately transforms our basic painter to this beautiful, 
+After that we'll define some procedures which transforms our basic painter to this beautiful, 
 complex pattern shown in <a href="#fig1">Figure-1.1</a>. I recommend you to read the <a href="https://mitpress.mit.edu/sicp/full-text/sicp/book/node36.html">book example</a>. 
 Although reading that is not mandatory to follow the code examples here.
 
@@ -183,8 +183,13 @@ pattern shown in <a href="#fig1">Figure-1.1</a>.
 {% gist 946274f47f75fc30ee34 %}
 
 ## Final thoughts 
-One of the most important thing is that painter is a primitive operation. And all the operations produce painter 
-themselves. Which is called closures. And using these property we can build arbitrarily complex systems from very 
-few basic operations. 
+The important thing I learnt from this example is how various painter operations work in an uniform way. And we can 
+build complex systems from very few basic operations.  
+
+<div class="message">
+“The fundamental data abstractions, painters, are implemented using procedural representations, which enables the 
+language to handle different basic drawing capabilities in a uniform way. The means of combination satisfy 
+the closure property, which permits us to easily build up complex designs.” -- SICP. 
+</div>
 
 You can check the full code <a href="https://github.com/JobaerChowdhury/picture-language">here</a>.  
