@@ -37,71 +37,74 @@ Although reading that is not mandatory to follow the code examples here.
 
 ## Vectors, Frames and drawLine 
 
-First we define a type alias Point which is just a pair of Float. 
+Let's get started. First we define a <a target="_blank" href = "http://elm-lang.org/docs/syntax#type-aliases">type 
+alias</a>, Point, which is just a pair of Float. 
 
 {% gist 05a4f960891ba39528e4 %}
 
-Now we define three primitive vector operations for working with Points. Those are addVect for vector addition, subVect for subtraction and scaleVect are for scaling vectors.  
+Next we define three primitive vector operations for working with Points. Those are 
+*addVect* for vector addition, *subVect* for subtraction, and *scaleVect* are for scaling vectors.  
 
 {% gist 72509bab1defc684ee5f %}
 
-Elm is influenced by **Haskell**. We can give the type annotation with each definition. Here *addVect/subVect* is taking 
+Elm is influenced by **Haskell**. We can give type annotation with each definition. Here *addVect* and *subVect* is taking 
 two points as parameters and produces a new point. *ScaleVect* is taking a float and a point as parameter, and returns a point. 
 
-Next we define a type called Frame. Frame has three properties, the origin, first edge and second edge. 
+Next we define a <a target="_blank" href="http://elm-lang.org/docs/records">record</a> type called Frame. Frame has three properties, the origin, first edge and second edge. 
 
 {% gist af2be00c00a7bbd1bccf %}
 
-Next we define the *frameCoordMap* as exactly defined in the book text. Here *frameCoordMap* will take two parameter, 
-a frame and a Point. And it will map that point inside the frame and return the coordinates of the mapped point. 
+Now we define the *frameCoordMap* function, as exactly defined in the book text. Here *frameCoordMap* takes two parameters, 
+a frame and a Point. And it will map that point inside the frame, and return the coordinates of the mapped point. 
 So that the point will be shifted and scaled to fit the frame. 
 
 {% gist fb2489311f63d9c8a147 %}
 
-Our primitive drawing operation is drawLine. We will use that operation to implement complex paint procedures. 
-For implementing drawLine we are using Elm’s segment function from Graphics module. The segment function takes 
-two coordinates and creates a path between them. And the traced function takes a LineStyle and a path and returns 
-a Form. Combining these two we can write the following function. 
+Our primitive drawing operation is *drawLine*. We'll use that operation to implement complex paint procedures. 
+For implementing *drawLine* we are using Elm’s <a target="_blank" 
+href="http://package.elm-lang.org/packages/elm-lang/core/2.1.0/Graphics-Collage#segment">segment</a> function from Graphics module. The segment function takes 
+two coordinates and creates a path between them. And the <a target="_blank" 
+href="http://package.elm-lang.org/packages/elm-lang/core/2.1.0/Graphics-Collage#traced">traced</a> function takes a *LineStyle* 
+and a *path* and returns a *Form*. Combining these two we can write the following function. 
 
 {% gist 6914b7ce13e707722dce %}
 
-We have chose to return Form because it’s very flexible type in elm’s graphics package. 
+We chose to return *Form* because it’s very flexible type in elm’s graphics module. 
 We can combine a collection of Forms into a single Form which will come handy when we combine painters. 
-Here **|>** is the forward function application, **x |> f == f x**. This function is useful for avoiding parenthesis and 
+Here **|>** is the forward function application, **x |> f == f x**. This function is useful for avoiding parenthesis, and 
 writing code in a more natural way. We could write the drawLine function also like this.
 
 {% gist 8390e4fc349cf66a0cde %}
 
-
 But to me the former looks more readable. Now we are ready to define our painters. 
 
 ## Painters
-Let’s define the type painter. Since we are following the book example, we will define the Painter type as something 
-which takes a frame as parameter and returns a Form. 
+We define the type *Painter* as a function. A function that takes a frame as parameter and returns a Form. 
 
 {% gist 45011f2d71f194e3fade %}
 
-Notice the difference between Point/Frame and Painter. Where Point and Frame represents some sort of values, 
-the Painter represents a function. Invoking that function with a frame as parameter will produce our intended drawing. 
-Representing Painter as function will turn out to be a powerful technique when we combine multiple painters.
+Notice the difference between *Point/Frame* and *Painter*. Where *Point* and *Frame* represents values, 
+*Painter* represents a function. Invoking that function with a frame as parameter will produce our intended drawing. 
+Representing *Painter* as function will turn out to be a powerful technique when we combine multiple painters.
 
-The first painter we will define is called segmentsPainter. It takes a list of line segments (start and end coordinate) 
-and draws the lines. That’s it. 
+The first painter we define is called *segmentsPainter*. It takes a list of line segments (start and end coordinate), 
+and draws lines for each of the segments. 
 
 {% gist 8dcd922395e0646a4d50 %}
 
-Notice the lambda notation represented by \frame ->. This means the segmentsPainter function is returning a function. 
-For each pair of coordinated we first map them inside our frame. And then call the drawLine function to draw a line 
-between them. Finally we combine a list of Forms into a single form by using the ‘group’ function. 
+Notice the lambda notation represented by *\frame ->*. This means that *segmentsPainter* is returning a function. 
+For each pair of coordinates we first map them inside the frame. And then call the *drawLine* function to draw a line 
+between them. Finally we combine a list of Forms into a single form by using the 
+<a target="_blank" href="http://package.elm-lang.org/packages/elm-lang/core/2.1.0/Graphics-Collage#group">group</a> function. 
 
-Using the segmentsPainter we can define different kind of painters. For example the ‘wave’ painter. The coordinate 
+Using the segmentsPainter we can define different kind of painters. For example the *wave* painter. The coordinate 
  values for the wave painter is taken from <a target="_blank" 
  href="http://www.billthelizard.com/2011/08/sicp-244-245-picture-language.html"> Bill the Lizard's page</a>.
 
 {% gist f58186576f0509e52a7c %}
 
-Now if we define a frame and call the main function to draw the wave painter like following, we will get a 
-image like <a href="#fig2">Figure-1.2</a>.
+Let's define a frame and call the main function to draw the *wave* painter like following. And we will get a 
+image like <a href="#fig2">Figure-1.2</a> as a result.
 
 {% gist ef160bfeaa4faab26321 %}
 
