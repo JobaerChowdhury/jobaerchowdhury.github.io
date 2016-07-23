@@ -2,7 +2,6 @@
 #
 # Use of `relative_permalinks` ensures post links from the index work properly.
 permalink:           pretty
-relative_permalinks: true
 
 # Setup
 title:               Jobaer's blog
@@ -11,6 +10,8 @@ tagline:             Random experiments
 url:                 http://jobaerchowdhury.github.io
 paginate:            1
 baseurl:             ""
+
+repository:          JobaerChowdhury/jobaerchowdhury.github.io
 
 # Assets
 #
