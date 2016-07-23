@@ -8,9 +8,7 @@ keywords: sicp, Structure and Interpretation of computer programs, picture langu
 
 
 <div class="message">
-  TL;DR: This is an implementation of the <a target="_blank" href="https://mitpress.mit.edu/sicp/full-text/sicp/book/node36.html">picture language example from SICP</a> in Elm. 
-  You can copy the code from <a target="_blank" href="https://github.com/JobaerChowdhury/picture-language/blob/master/PictureLanguage.elm">here</a> 
-  and paste it on <a target="_blank" href="http://elm-lang.org/try">Try Elm</a> to see the <a href="#fig1">result</a>. Have fun!
+  TL;DR: This is an implementation of the <a target="_blank" href="https://mitpress.mit.edu/sicp/full-text/sicp/book/node36.html">picture language example from SICP</a> in Elm. You can see the final result <a href="#fig1">here</a>.
 </div>
 
 
