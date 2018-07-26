@@ -10,7 +10,7 @@ keywords: scala, functional programming, control structure, repeat until, custom
 করতে পারি। এখানে আমরা তেমন একটি `control structure`, `repeat-until` লুপ তৈরি করব। 
 
 আমরা আমাদের `repeat-until` তৈরি করব ধাপে ধাপে, এবং সেইসাথে `scala` এর কিছু `feature` এর সাথেও পরিচিত হব। 
-আমাদের `implementation` শেষ হবার পর আমরা নিচের মত কোড লিখতে পারব। 
+আমাদের `implementation` শেষ হবার পর আমরা নিচের মত করে কোড লিখতে পারব। 
 
 ```scala
 var i = 0
@@ -20,12 +20,12 @@ repeat {
 } until (i < 10)
 ```
 
-উপরের কোড দেখে আপনাদের কি মনে হচ্ছে না যে `repeat-until` `scala` তে `built-in`? আমার কিন্তু প্রথমে তাই মনে হয়েছিল। 
+উপরের কোড দেখে আপনাদের কি মনে হচ্ছে না যে `repeat-until` `scala` তে `built-in`? 
 
 চলুন দেখি কিভাবে আমরা এই `control structure` টি `implement` করতে পারি।  
 
 ###  প্রথম ধাপঃ repeatN
-প্রথম ধাপে আমরা `implement` করব `repeatN` ফাংশন। চলুন দেখি `repeatN` এর টাইপ সিগনেচার।
+প্রথম ধাপে আমরা `implement` করব `repeatN` ফাংশান। চলুন দেখি `repeatN` এর টাইপ সিগনেচার।
 
 ```scala
 def repeatN(f: () => Unit, n: Int): Unit = ??? 
