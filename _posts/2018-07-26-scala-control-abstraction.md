@@ -41,7 +41,7 @@ repeatN(() => {
   }, 3)
 ```
 
-উপরের code টি তিন বার `Hello, world!` প্রিন্ট করবে। চলুন দেখি `repeatN` এর `implementation`:
+উপরের কোড টি তিন বার `Hello, world!` প্রিন্ট করবে। চলুন দেখি `repeatN` এর `implementation`:
 
 ```scala
 def repeatN(f: () => Unit, n: Int): Unit = {
@@ -117,7 +117,7 @@ def repeatC(b: => Unit)(c: => Boolean): Unit = {
 
 এখানে দুটি বিষয় লক্ষণীয়। 
 * `repeatC` একটি [recursive function](https://alvinalexander.com/scala/scala-recursion-examples-recursive-programming)
-* `parameter` গুলি দুটি group এ নেয়া হয়েছে, যাতে আমরা `,` ব্যবহার না করে `()` দিয়ে `parameter` গুলোকে আলাদা করতে পারি।  
+* `parameter` গুলি দুটি `group` এ নেয়া হয়েছে, যাতে আমরা `,` ব্যবহার না করে `()` দিয়ে `parameter` গুলোকে আলাদা করতে পারি।  
 
 ### চতুর্থ ধাপঃ until সহ প্রথম প্রচেষ্টা 
 
@@ -175,8 +175,8 @@ def foo(body: => Unit) = new {
 `scala` তে `new {}` দিয়ে আমরা একটি `anonymous object` তৈরি করতে পারি। কাজেই উপরের `foo` যা করছে তা হলঃ 
 
 * `new {}` দিয়ে একটি `object` তৈরি করছে, যার `constructor parameter` এ একটি কোড ব্লক পাঠানো যায়। 
-* ঐ `object` টিতে `bar` নামে একটি ফাংশান আছে, যেটা `parameter` হিসাবে আরেকটি কোড ব্লক নেয়। 
-* যদি `condition` কোড ব্লক টি `true evaluate` করে, তাহলে `bar` ফাংশান `body` নামক কোড ব্লকটি (যেটা আমরা `constructor parameter` 
+* ঐ `object` টিতে `bar` নামে একটি `method` আছে, যেটা `parameter` হিসাবে আরেকটি কোড ব্লক নেয়। 
+* যদি `condition` কোড ব্লক টি `true evaluate` করে, তাহলে `bar` ফাংশান, `body` নামক কোড ব্লকটি (যেটা আমরা `constructor parameter` 
    হিসাবে পাঠিয়েছি) `execute` করবে.           
 
 আমরা নিচের মত করে `foo` এবং `bar` কে ব্যবহার করতে পারব। 
