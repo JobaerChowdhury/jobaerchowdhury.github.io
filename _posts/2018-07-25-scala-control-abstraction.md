@@ -20,8 +20,9 @@ repeat {
 } until (i < 10)
 ```
 
-উপরের কোড দেখে আপনাদের কি মনে হচ্ছে না যে `repeat-until` `scala` তে `built-in`? আমার কিন্তু প্রথমে তাই মনে হয়েছিল। চলুন দেখি কিভাবে 
-আমরা এই `control structure` টি `implement` করতে পারি।  
+উপরের কোড দেখে আপনাদের কি মনে হচ্ছে না যে `repeat-until` `scala` তে `built-in`? আমার কিন্তু প্রথমে তাই মনে হয়েছিল। 
+
+চলুন দেখি কিভাবে আমরা এই `control structure` টি `implement` করতে পারি।  
 
 ###  প্রথম ধাপঃ repeatN
 প্রথম ধাপে আমরা `implement` করব `repeatN` ফাংশন। চলুন দেখি `repeatN` এর টাইপ সিগনেচার।
@@ -97,20 +98,20 @@ def repeatN(f: => Unit, n: Int): Unit = {
 এই ধাপে আমরা `implement` করব `repeatC` - যেটাকে আমরা নিচের মত করে ব্যবহার করতে পারি।  
 
 ```scala
-var t = 0
+var i = 0
 repeatC {
   println("Hello, repeat with condition")
-  t = t + 1
-} (t < 5)
+  i = i + 1
+} (i < 5)
 ```
 
 `repeatC` এবং `repeat-until` এর মধ্যে একমাত্র পার্থক্য হল, `repeatC` তে `until` `keyword` টা নেই (যার কারণে এর implementation 
 কিছুটা সহজ)। চলুন দেখে নেওয়া যাক `repeatC` এর `implementation`। 
 
 ```scala
-def repeatC(block: => Unit)(condition: => Boolean): Unit = {
-  block
-  if (condition) repeatC(block)(condition)
+def repeatC(b: => Unit)(c: => Boolean): Unit = {
+  b
+  if (c) repeatC(b)(c)
 }
 ```
 
@@ -120,19 +121,21 @@ def repeatC(block: => Unit)(condition: => Boolean): Unit = {
 
 ### চতুর্থ ধাপঃ until সহ প্রথম প্রচেষ্টা 
 
-`until keyword` ছাড়া `repeat` আমার কাছে `fluent` শোনায় না, তাই আমরা এবার `until keyword implement` করার চেষ্টা করব।  
+`until keyword` ছাড়া `repeat`, `fluent` শোনায় না, তাই আমরা এবার `until keyword implement` করার চেষ্টা করব।  
 
 ```scala
 def until(f: => Boolean): Boolean = f
 
-var x = 0
+var i = 0
 repeatC {
   println("Hello, repeat until (almost)")
-  x = x + 1
-} (until (x < 4))
+  i = i + 1
+} (until (i < 5))
 ```
-এখানে `until` তেমন কিছুই করছে না, যে `condition` `parameter` হিসাবে পাচ্ছে সেটাকেই `execute` করছে। 
-এবং আমরা এখানে আমাদের আগের `repeatC` ফাংশানই বেবহার করতে পারছি। এখানে একমাত্র বাজে বেপার হচ্ছে `until` অংশটুকু `parantheses` এর ভিতরে। 
+এখানে `until` তেমন কিছুই করছে না, শুধুমাত্র যে `condition` `parameter` হিসাবে পাচ্ছে সেটাকেই `execute` করছে। 
+এবং আমরা এখানে আমাদের আগের `repeatC` ফাংশানই ব্যবহার করতে পারছি। 
+
+এখানে যে জিনিসটা আমার পছন্দ হচ্ছে না তা হল, `until` অংশটুকু `parantheses` এর ভিতরে। 
 যদি আমরা `(until (x < 4))` এর পরিবর্তে `until (x < 4)` লিখতে পারতাম, তাহলে আমাদের `implementation` এখানেই শেষ হয়ে যেত। কিন্তু 
 এখন আপনি সেটা করতে গেলে `compile fail` করবে (কেন বলতে পারবেন?)। 
 
@@ -152,29 +155,41 @@ foo bar (3 > 2) // evaluates to true
 
 `foo object` এর `bar method` আমরা দুইভাবে `call` করতে পারি, `.` দিয়ে, অথবা স্পেস দিয়ে।  
 
-class FooWithBody(body: => Unit) {
-  def bar(f: => Boolean): Unit = {
-    if (f) body
-  }
-}
+এখন আমরা যদি আবার আমাদের `repeat-until` এর `general structure` টা খেয়াল করি - 
 
-new FooWithBody {
-  println("Foo with body class")
-} bar (2 > 1)
+```
+repeat { } until ( )
+```  
+
+কাজেই আমরা যদি `(until (x < 4))` এর পরিবর্তে `until (x < 4)` লিখতে চাই, তাহলে আমাদের `repeat` দিয়ে একটা অবজেক্ট তৈরি করতে হবে, 
+যার একটা `method` থাকবে `until`, অনেকটা নিচের মত। 
 
 ```scala
-def fooBody(body: => Unit) = new {
-  def bar(f: => Boolean): Unit = {
-    if (f) body
+def foo(body: => Unit) = new {
+  def bar(condition: => Boolean): Unit = {
+    if (condition) body
   }
 }
+```
 
-fooBody {
-  println("Foo body anonymous func")
-} bar (2 > 1)
+`scala` তে `new {}` দিয়ে আমরা একটি `anonymous object` তৈরি করতে পারি। কাজেই উপরের `foo` যা করছে তা হলঃ 
+
+* `new {}` দিয়ে একটি `object` তৈরি করছে, যার `constructor parameter` এ একটি কোড ব্লক পাঠানো যায়। 
+* ঐ `object` টিতে `bar` নামে একটি ফাংশান আছে, যেটা `parameter` হিসাবে আরেকটি কোড ব্লক নেয়। 
+* যদি `condition` কোড ব্লক টি `true evaluate` করে, তাহলে `bar` ফাংশান `body` নামক কোড ব্লকটি (যেটা আমরা `constructor parameter` 
+   হিসাবে পাঠিয়েছি) `execute` করবে.           
+
+আমরা নিচের মত করে `foo` এবং `bar` কে ব্যবহার করতে পারব। 
+
+```scala
+foo {
+  println("Hello, World!")
+} bar (2 > 1) // this will print 'Hello, World!' since 2 > 1 evaluates to true
 ```
 
 ### শেষ ধাপঃ repeat until 
+
+উপরের সবগুলি ধাপ বুঝতে পারলে এখন `repeat-until implement` করা আমাদের জন্য খুবই সহজ। নিচে তা দেওয়া হল।  
  
 ```scala
 def repeat(b: => Unit) = new {
@@ -183,8 +198,11 @@ def repeat(b: => Unit) = new {
     if (c) until(c)
   }
 }
+```
 
+এবং এখন আমরা আমাদের লক্ষ্য অনুযায়ী নিচের মত করে `repeat-until` ব্যবহার করতে পারব।  
 
+```scala
 var i = 0
 repeat {
   println("Hello, World!")
@@ -193,5 +211,16 @@ repeat {
 ```
 
 ### পরিশিষ্ট
+
+আমরা প্রধানত `scala` এর নিচের `feature` গুলি ব্যবহার করেছি `repeat-until` `implement` করার জন্য। 
+
+* [higher order function](https://docs.scala-lang.org/tour/higher-order-functions.html)
+* [by-name parameters](https://docs.scala-lang.org/tour/by-name-parameters.html)
+* `parameter group`
+* `anonymous object`
+
+
 `repeat-until` দেখানোর উদ্দেশ্য হল, কিছু `language feature` ব্যবহার করে কিভাবে আমরা সহজেই `built-in control structure` এর মত 
-`control structure` তৈরি করতে পারি। এইরকম `control structure`, `api` কে `fluent` করে তুলতে অথবা `DSL implement` করতে কাজে লাগে।    
+`control structure` তৈরি করতে পারি। এইরকম `control structure`, `api` কে `fluent` করে তুলতে অথবা `DSL implement` করতে কাজে লাগে।
+
+     
