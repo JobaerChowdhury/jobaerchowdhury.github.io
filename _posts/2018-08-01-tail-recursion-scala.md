@@ -16,7 +16,7 @@ def factorial (n:Int): Int =
 Scala তে recursive ফাংশান লিখার সময় একটি জিনিস আমাদের জানা খুব জরুরি, তা হল `tail recursion`। আমাদের লিখা `recursive` ফাংশান যদি `tail recursive` না হয়, তাহলে প্রোগ্রাম চলার সময় `StackOverflowError` হবার সম্ভাবনা থেকে যায়। চলুন দেখি বিস্তারিত। 
 
 ### Tail recursion কি? 
-আমরা জানি recursive ফাংশান হল সেই ফাংশান, যে তার বডি এর মধ্যে নিজেকেই আবার কল করে। কোন `recursive` ফাংশান এর একদম শেষের এক্সপ্রেশনটি যদি হয় তার নিজেকে কল করা, তাহলে সেই ফাংশান কে আমরা বলি `tail recursive` ফাংশান। যেমন নিচের `gcd`  ফাংশানটি একটি `tail recursive` ফাংশান, কারণ ফাংশানটি তার শেষ এক্সপ্রেশন এ নিজেকে কল করেছে । 
+আমরা জানি recursive ফাংশান হল সেই ফাংশান, যে তার বডি এর মধ্যে নিজেকেই আবার কল করে। কোন `recursive` ফাংশান এর একদম শেষের এক্সপ্রেশনটি যদি হয় তার নিজেকে কল করা, তাহলে সেই ফাংশান কে আমরা বলি `tail recursive` ফাংশান। যেমন নিচের `gcd`  ফাংশানটি একটি `tail recursive` ফাংশান, কারণ ফাংশানটি তার শেষ এক্সপ্রেশেনে নিজেকে কল করেছে । 
 
 ```scala
 def gcd(a: Int, b: Int): Int = {
@@ -112,6 +112,7 @@ Error: could not optimize @tailrec annotated method sum: it contains a recursive
 
 ```bash
 $ cat ListSum.scala
+
 object ListSum {
   def sum(ls: List[Int]): Long = ls match {
     case Nil => 0
@@ -122,6 +123,7 @@ object ListSum {
 $ scalac ListSum.scala
 
 $ javap -p -c ListSum\$.class
+
 Compiled from "ListSum.scala"
 public final class ListSum$ {
   public static final ListSum$ MODULE$;
@@ -153,6 +155,7 @@ public final class ListSum$ {
 
 ```bash 
 $ cat ListSumTailRec.scala
+
 import scala.annotation.tailrec
 
 object ListSumTailRec {
@@ -170,6 +173,7 @@ object ListSumTailRec {
 $ scalac ListSumTailRec.scala
 
 $ javap -p -c ListSumTailRec\$.class
+
 Compiled from "ListSumTailRec.scala"
 public final class ListSumTailRec$ {
   public static final ListSumTailRec$ MODULE$;
