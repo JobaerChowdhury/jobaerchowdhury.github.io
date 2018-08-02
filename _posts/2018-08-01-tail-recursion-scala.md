@@ -99,7 +99,7 @@ Error: could not optimize @tailrec annotated method sum: it contains a recursive
 শুধুমাত্র `private` অথবা `final` অথবা অন্য কোনও মেথড এর ভিতরের মেথড `tail call optimization` এর জন্য বিবেচিত হবে। 
 
 ### উপসংহার 
-প্রয়োজন না হলে `recursive function` না লিখাই ভাল। আগে দেখতে হবে  যেসব `library` ফাংশান দেয়া আছে, যেমন `fold`, `map`, `reduce` ইত্যাদি দিয়ে কাজ হচ্ছে কিনা। আর যদি `recursive` ফাংশান না লিখে কোনও ভাবেই হাতে থাকা সমস্যাটি সমাধান করা না যায়, তাহলে চেষ্টা করতে হবে যাতে ফাংশানটিকে `tail recursive` বানানো যায়। 
+প্রয়োজন না হলে `recursive function` না লিখাই ভাল। আগে দেখতে হবে  যেসব `library` ফাংশান দেয়া আছে, যেমন `fold`, `map`, `reduce` ইত্যাদি দিয়ে কাজ হচ্ছে কিনা। আর যদি `recursive` ফাংশান না লিখে কোনও ভাবেই হাতে থাকা সমস্যাটি সমাধান করা না যায়, তাহলে চেষ্টা করতে হবে যাতে `recursive` ফাংশানটিকে `tail recursive` বানানো যায়। 
 
 এ বিষয়ে আরও বিস্তারিত জানতে নিচের লিঙ্কগুলো দেখতে পারেন। 
 * [Martin Odersky এর বইয়ের এই অংশটুকু](https://www.artima.com/pins1ed/functions-and-closures.html#8.9)
