@@ -5,6 +5,7 @@ excerpt: Analyzing the StackOverflow developer survey data of Bangladesh
 keywords: bangladesh, stack overflow, developers, programmers, survey, data, statistics, 2019
 ---
 
+<div class="spacer"></div>
 
 # Introduction 
 I have been playing with [this year's StackOverflow developer survey data](https://insights.stackoverflow.com/), after they make it publicly available. And was trying to learn more about the developer community of Bangladesh. In this post I present
@@ -13,20 +14,27 @@ what I've learned from analyzing the data.
 In the survey, there were __605__ entries from Bangladesh. On average the survey took __25 minutes__
 to complete. So I think those who participated in the survey are more or less representatives of the Bangladeshi developer community.
 
-### Key points (todo: refine, stylize this list)
-- Lack of support from management is one of the key productivity challenge in Bangladesh
-- There is little relationship between developers salary and experience
-- The approval rate of the managers is surprisingly high compared to other countries
-- Majority of the developers want to become manager in future, a trend that we don't see in the IT-developed countries.
-- We are aware about our abilities; majority of us don't think we are above average (which is statistically impossible) like most other countries (Are we really? Read on for details)
-- Majority of the developers are satisfied with their current job, and overall career 
-- Those who are actively seeking jobs, switched their last job less than 2 years ago. 
-- Opportuniteis for professional growth, and company culture is the most imporant factors for job seekers 
-- Developers are self learners, most of them are teaching themselves languages, frameworks, participating in MOOCs etc. 
-- Javascript is the most loved, Python is the most wanted language, and React is the most wanted framework.
-- Majority of the companies don't employ unit tests
-- Majority of the developers do code reviews as they see value in it. 
+<div class="spacer"></div>
 
+# Key points
+If you don't feel like seeing a lot of charts right now, here is the summary for you. 
+
+- *Lack of support from management is one of the key productivity challenge in Bangladesh*
+- *There is little relationship between developers salary and experience*
+- *The approval rate of the managers is surprisingly high compared to some other countries*
+- *Majority of the developers want to become manager in future, a trend that we don't see in the IT-developed countries.*
+- *We are aware about our abilities; majority of us don't think we are above average. (Are we really? Read on for details)*
+- *Majority of the developers are satisfied with their current job, and overall career* 
+- *Those who are actively seeking jobs, switched their last job not more than 2 years ago.* 
+- *Opportuniteis for professional growth, and company culture is the most imporant factors for job seekers*
+- *Developers are self learners, most of them are teaching themselves languages, frameworks, participating in MOOCs etc.*
+- *Javascript is the most loved, Python is the most wanted language, and React is the most wanted framework.*
+- *Majority of the companies don't employ unit tests*
+- *Majority of the developers do code reviews as they see value in doing so.*
+
+If you are someone like me, who believes **data is beautiful**, read on. 
+
+<div class="spacer"></div>
 
 # Basic information about the respondents 
 
@@ -85,9 +93,8 @@ indicate anything regarding how good or bad the developer is. I believe one can 
     <div class="caption">Figure-1.6: How often do you contribute to open source</div>
 </div>
 
-I find this __pleasantly__ surprising. I never realized around 22% of the developers in Bangladesh contribute to some open source software 
-once a month or more often. As a developer with 12 years of professional experience, I feel guilty of not able to do that, since 
-I am **using open source software every single day**. I absolutely want to, but find it difficult to start. 
+I find this __pleasantly__ surprising. I never realized around 22% of the respondents from Bangladesh contribute to some open source software once a month or more often. As a developer with 12 years of professional experience, I feel guilty of not able to do that, since 
+I am **using open source software every single day**. I want to contribute, but find it difficult to start. 
 Kudos to you if you are a opensource contributor!
 
 
@@ -101,7 +108,9 @@ what non-academic type of learning we involve ourselves in.
 </div>
 
 This chart confirms my belief that we, the developers, are **lifelong learners**. We enjoy learning new things. 
-And we are continuing our learning by ourselves, whether it is a new language or framework, or whether by participating in a MOOC. 
+And we are continuing the learning process by ourselves, whether it is a new language or framework, or whether by participating in a MOOC. 
+
+<div class="spacer"></div>
 
 # Feeling of competence 
 In the survey they asked a question,  
@@ -130,13 +139,14 @@ a bit differently. This time comparing the thought of being above average vs the
     <div class="caption">Figure-2.3: Thinking of above average vs professional experience</div>
 </div>
 
-Yes, now I find what I was seeking. As we get more experience, we tend to inflate our abilities. We probably forget that, 
-it's not only me, other people are also getting more experience. 
+Yes, now I find what I was seeking. **As we get more experience, we tend to inflate our abilities.** We probably forget that, it's not only me, other people are also getting more experience. 
 The developers in the group of 11-20 years experience in Bangladesh believe 84% of them are better than average! 
 Are you aware of the [Dunning–Kruger effect](https://en.wikipedia.org/wiki/Dunning%E2%80%93Kruger_effect)?
 
 
-## Salary
+<div class="spacer"></div>
+
+# Salary
 The first chart I want to show about salary is by plotting individual salary data vs experience in a scatter plot. 
 
 <div id="fig11" class="chart">
@@ -152,11 +162,11 @@ experience and salary. It's not unique to Bangladesh, I have seen similar chart 
     <div class="caption">Figure-3.2: Median salary vs experience</div>
 </div>
 
-Software development is a competitive field. Most of the companies don't want to limit themselves when hiring by imposing some structure on the salary vs the candidates experience. So there is a strong chance that even if you are junior, you can make more 
-than some seniors, if you are productive, and can produce value for your company. And we should not take it for granted 
-that our salary will rise as we get more experience. It probably will, but not automatically, __you'll have to earn it__. 
+Software development is a competitive field. Most of the companies don't want to limit themselves when hiring, by imposing some structure on the salary vs the candidate's experience. So there is a strong chance that even if you are junior, you can make more than some seniors, if you are productive, and can produce value for your company. And we should not take it for granted that our salary will rise as we get more experience. It probably will, but not automatically, __you'll have to earn it__. 
 
-One tip for developers who are seeking jobs. `If possible refrain from mentioning your current and expected salary when asked. Instead request the employer to come up with their best offer.`
+And since there is no structure, here's one tip for developers who are seeking jobs. `If possible refrain from mentioning your current and expected salary when asked. Instead request the employer to take your interview first, and come up with their best offer once you passed.`
+
+<div class="spacer"></div>
 
 # Development practices and productivity
 Let's see how we are doing in terms of development practices, and also what hinders our productivity. 
@@ -175,8 +185,7 @@ So most of us are doing code review as part of our work, and we also see the val
     <div class="caption">Figure-4.2: Unit test practice in the company</div>
 </div>
 
-Unfortunately, only a few of the companies employ unit tests as part of their process. I am personally not a huge fan of 
-unit tests myself, but I see the value in it, especially when refactoring some part of the code. 
+Unfortunately, less than one third of the companies employ unit tests as part of their process. I am personally not a huge fan of unit tests myself, but I see the value in it, especially when refactoring some part of the code. 
 
 ### Greatest challenge to productivity 
 When asked what are the greatest challenges to productivity, we see the following. 
@@ -191,14 +200,16 @@ So distracting work environment is the main culprit here. This is same for most 
 If you don't believe me, [ask DHH.](https://m.signalvnoise.com/the-open-plan-office-is-a-terrible-horrible-no-good-very-bad-idea/)
 If you are the key decision maker in your company, you should seriously evaluate this. You don't have to do it just because [Facebook did it](https://www.inc.com/tanner-christensen/how-facebook-keeps-employees-happy-in-the-worlds-largest-open-office.html), maybe you copied half of the things and forgot the rest. 
 
-What about the next one? Lack of support from management is also a greatest challenge to productivity in Bangladesh. Seriously? I thought the managers are there to help us be our best? Why should their support be __lacking__? Who's benefit they are considering when they are not supporting the developers under them properly? The company's or themselves? This is sad. When I compare the "lack of management support" with other countries I see this. 
+What about the next one? Lack of support from management is also a greatest challenge to productivity in Bangladesh. Seriously? I thought the managers are there to help us be our best? Why should their support be __lacking__? Who's benefit they are considering when they are not supporting the developers properly? The company's or themselves? This is sad. When I compare the "lack of management support" with other countries I see this. 
 
 <div id="fig16" class="chart">
     <img src="/public/so-survey-2019/lacksupport.jpg" /> 
     <div class="caption">Figure-4.3: Lack of management support across companies</div>
 </div>
 
-This is unfortunate. Our managers are lacking considerably when it comes to support the developers, compared to the countries which have more mature software development industry.
+This is unfortunate. Our managers are lacking considerably when it comes to support the developers, compared to the countries which have more mature software industry.
+
+<div class="spacer"></div>
 
 # Career values 
 The survey asked about the current job satisfaction, and overall career satisfaction.
@@ -230,6 +241,8 @@ countries.
 Ok, so developers in the other countries may be a bit more satisfied about their career. But we are not that much 
 behind. 
 
+<div class="spacer"></div>
+
 # Management
 The survey asked some questions about whether the respondent approves of his manager, or in future whether we want to 
 become manager or not.
@@ -244,6 +257,8 @@ The survey asked,
 </div>
 
 Surprisingly, it seems majority of us think our mangers know what they are doing. Good. 
+
+*Fun fact, in the stack overflow data this column is called __MgrIdiot__*
 
 ### Need to become manager to make more 
 
@@ -272,6 +287,8 @@ I want to believe the majority of who want to become managers are passionate abo
 Sad, but that's how it is in Bangladesh. I think companies should create technical positions for developers, who do not manage project or people directly, but takes key decision in technical implementations. And also evaluate them appropriately. So that, developers who are not really passionate about management, also have career growth. 
 
 And my request to these two third of the developers, when you do become manager, support the developers under you to become their best. So that we can see **lack of support from management** is no longer a challenge to productivity in Bangladesh. 
+
+<div class="spacer"></div>
 
 # Technology stack
 ### Most commonly used language 
@@ -338,9 +355,13 @@ And HTML/CSS is most dreaded closely followed by PHP.
     <div class="caption">Figure-7.8: Most wanted web frameworks</div>
 </div>
 
+So jQuery can be, at the same time, the most used, loved, and dreaded web framework in Bangladesh.  But the crown for most wanted web framework goes to React. 
+
 ### Other tech stats 
 I omitted some other technology statistics, if you are interested please 
 [check the charts here](https://so-survey-bd.glitch.me/loved-tech.html). 
+
+<div class="spacer"></div>
 
 # Job search
 
@@ -368,10 +389,12 @@ opportunities for professional growth.
     <div class="caption">Figure-8.3: Job seekers stability</div>
 </div>
 
-So it seems among active job seekers, half of them switched their job not more than 2 years ago. 
+And among active job seekers, half of them switched their job not more than 2 years ago. 
 Maybe they haven't found their dream company yet, or maybe job seeking is also a hobby for some.
 
-# Miscellaneous status
+<div class="spacer"></div>
+
+# Miscellaneous stats
 
 ## Social media use 
 
@@ -401,16 +424,20 @@ I would like to finish the stats with this one.
     <div class="caption">Figure-9.3: Optimism about future</div>
 </div>
 
-I love this result. Even with so many challenges in Bangladesh, two third os us believe that people born today will have a better future than their parents. This fills my heart with joy. I know it will not happen magically, but believing is the first step. 
+I love this result. Even with so many challenges in Bangladesh, two third os us believe that people born today will have a better life than their parents. This fills my heart with joy. I know it will not happen magically, but believing is the first step. 
+
+<div class="spacer"></div>
 
 # Conclusion 
 If you have read this far, thank you very much for your time. I feel the time I spent analyzing the data, and writing this post is well spent. As a part of the developer community of Bangladesh, I hope you will do your best to move the industry forward. 
 
 Lastly, 
-- I hope our local industry grows, in such a way that, developers don't have to become managers just for the sake of better benefits. Rather, they become managers because they are passionate about management. 
-- If you are a manager now, identify how you can help your developers become more productive. 
-- If you are a developer who want to become manager in future, keep in mind all the challenges that you face now, and make sure those are not repeated for the developers working under you. 
-- Participate the next Stack Overflow survey when that happens. 
+- *I hope our local industry grows, in such a way that, developers don't have to become managers just for the sake of better benefits. Rather, they become managers because they are passionate about management.*
+- *If you are a manager now, identify how you can help your developers become more productive.*
+- *If you are a developer who want to become manager in future, keep in mind all the challenges that you face now, and make sure those are not repeated for the developers working under you.*
+- *Participate in the next Stack Overflow survey when that happens, so that we can learn more about our profession*
+
+<div class="spacer"></div>
 
 # Appendix
 If you haven't already, check out [the main survey results](https://insights.stackoverflow.com/survey/2019).
