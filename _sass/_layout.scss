@@ -2,11 +2,17 @@
 //
 // Styles for managing the structural hierarchy of the site.
 .container {
-    max-width: 76%;
+    max-width: 96%;
     padding-left: 1.5rem;
     padding-right: 1.5rem;
     margin-left: auto;
     margin-right: auto;
+}
+
+@media screen and (min-width: 768px) {
+    .container {
+        max-width: 80%;
+    }
 }
 
 footer {
